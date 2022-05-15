@@ -25,4 +25,27 @@ public class Ex_AlertsTests extends TestBase {
         Assert.assertEquals(msg,"OK button pressed");
     }
 
+    @Test
+    public void shouldFillPromptAlert(){
+        driver.findElement(By.cssSelector("#prompt-alert")).click();
+        driver.switchTo().alert().sendKeys("Seba");
+        driver.switchTo().alert().accept();
+
+        String msg = driver.findElement(By.cssSelector("#prompt-label")).getText();
+
+        Assert.assertEquals(msg,"Hello Seba! How are you today?");
+
+    }
+
+    @Test
+    public void shouldDismissAlert(){
+        driver.findElement(By.cssSelector("#confirm-alert")).click();
+        driver.switchTo().alert().dismiss();
+
+        String msg = driver.findElement(By.cssSelector("#confirm-label")).getText();
+
+        Assert.assertEquals(msg,"You pressed Cancel!");
+
+    }
+
 }
