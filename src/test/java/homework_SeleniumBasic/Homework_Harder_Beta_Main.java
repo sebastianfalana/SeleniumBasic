@@ -2,9 +2,11 @@ package homework_SeleniumBasic;
 
 import ch3_TestBase.TestBase;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class Homework_Harder_Beta_Main extends TestBase {
 
+    @Test
     public void shouldTextAppearedBeta() {
 
         int len = 10;
