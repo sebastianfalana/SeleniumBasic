@@ -23,8 +23,8 @@ public class Ex1_FormPop extends TestBase {
         formPage.selectRandomExperience();
         formPage.selectAllProfession();
         formPage.setCommands("browser-commands");
-        formPage.setFile(new File("src/main/resources/file.txt"));
-        formPage.selectSignIn();
+        formPage.uploadFile(new File("src/main/resources/file.txt"));
+        formPage.submitForm();
 
         Assert.assertEquals(formPage.getValidationMsg(),"Form send with success");
     }

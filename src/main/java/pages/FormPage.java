@@ -59,46 +59,57 @@ public class FormPage {
 //        }
 //
 //    }
-    public void setFirstName(String firstName){
+    public FormPage setFirstName(String firstName){
         this.firstName.sendKeys(firstName);
+        return this;
     }
-    public void setLastName(String lastName){
+    public FormPage setLastName(String lastName){
         this.lastName.sendKeys(lastName);
+        return this;
     }
-    public void setEmail(String email){
+    public FormPage setEmail(String email){
         this.email.sendKeys(email);
+        return this;
     }
-    public void setAge(String age){
+    public FormPage setAge(String age){
         this.age.sendKeys(age);
+        return this;
     }
-    public void setContinent(String continent){
+    public FormPage setContinent(String continent){
         new Select(selectContinents).selectByValue(continent);
+        return this;
     }
-    public void selectRandomGender(){
+    public FormPage selectRandomGender(){
         getRandomElement(genders).click();
+        return this;
     }
-    public void selectRandomExperience(){
+    public FormPage selectRandomExperience(){
         getRandomElement(experience).click();
+        return this;
     }
 
-    public void selectAllProfession(){
+    public FormPage selectAllProfession(){
         for (WebElement profession :
                 professions) {
             profession.click();
         }
+        return this;
     }
 
-    public void setCommands(String commands){
+    public FormPage setCommands(String commands){
         new Select(selectCommands).selectByValue(commands);
+        return this;
     }
 
-    public void selectSignIn(){
+    public FormPage submitForm(){
         signIn.click();
+        return this;
     }
 
-    public void setFile(File fileToUpload){
+    public FormPage uploadFile(File fileToUpload){
 //        File fileToUpload = new File("src/main/resources/file.txt");
         chooseFile.sendKeys(fileToUpload.getAbsolutePath());
+        return this;
     }
 
     public String getValidationMsg(){
