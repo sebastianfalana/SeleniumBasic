@@ -10,39 +10,30 @@ import java.util.List;
 
 public class Homework_DataPickers extends TestBase {
 
+    String pickUserDate = "08/31/2022";
+    int pickMonthByUser = 7;
+    int pickYearByUser = 2022;
     @Test
     public void shouldPickDate(){
         driver.get("https://seleniumui.moderntester.pl/datepicker.php");
         driver.findElement(By.cssSelector("#datepicker")).click();
 
-        if (getCurrentMonth() == 7){
-            if (getCurrentYear() == 2022){
-                getForthCell().click();
-            }else if(getCurrentYear() > 2022){
-                while (getCurrentYear() != 2022){
-                    getPrevArrowHandler().click();
-                }
-                getForthCell().click();
-            }else {
-                while (getCurrentYear() != 2022){
-                    getNextArrowHandler().click();
-                }
-                getForthCell().click();
-            }
-        }else if(getCurrentMonth() > 7){
-            while (getCurrentMonth() != 7){
+        if (getCurrentYear() == pickYearByUser){
+            pickCorrectMonth();
+        }else if(getCurrentYear() > pickYearByUser){
+            while (getCurrentYear() != pickYearByUser){
                 getPrevArrowHandler().click();
             }
-            getForthCell().click();
+           pickCorrectMonth();
         }else {
-            while (getCurrentMonth() != 7){
+            while (getCurrentYear() != pickYearByUser){
                 getNextArrowHandler().click();
             }
-            getForthCell().click();
+            pickCorrectMonth();
         }
 
         System.out.println(getDataPicker());
-        Assert.assertEquals(getDataPicker(),"08/31/2022");
+        Assert.assertEquals(getDataPicker(),pickUserDate);
     }
 
 
@@ -71,6 +62,22 @@ public class Homework_DataPickers extends TestBase {
 
     public String getDataPicker(){
         return driver.findElement(By.cssSelector("#datepicker")).getAttribute("value");
+    }
+
+    public void pickCorrectMonth(){
+        if (getCurrentMonth() == pickMonthByUser){
+            getForthCell().click();
+        }else if(getCurrentMonth() > pickMonthByUser){
+            while (getCurrentMonth() != pickMonthByUser){
+                getPrevArrowHandler().click();
+            }
+            getForthCell().click();
+        }else {
+            while (getCurrentMonth() != pickMonthByUser){
+                getNextArrowHandler().click();
+            }
+            getForthCell().click();
+        }
     }
 
 }
