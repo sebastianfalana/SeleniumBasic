@@ -45,14 +45,18 @@ public class Homework_DataPickers extends TestBase {
     }
 
     public int getCurrentYear(){
-        return Integer.parseInt(getForthCell().getAttribute("data-year"));
+        return Integer.parseInt(getFifthRowForthCell().getAttribute("data-year"));
     }
 
     public int getCurrentMonth(){
-        return Integer.parseInt(getForthCell().getAttribute("data-month"));
+        return Integer.parseInt(getFifthRowForthCell().getAttribute("data-month"));
     }
 
-    public WebElement getForthCell(){
+    public int getCurrentDay(){
+        return Integer.parseInt(getFifthRowForthCell().getAttribute("data-month"));
+    }
+
+    public WebElement getFifthRowForthCell(){
         List<WebElement> rows = driver.findElements(By.cssSelector("tbody tr"));
         WebElement fifthRow = rows.get(4);
 
@@ -66,18 +70,22 @@ public class Homework_DataPickers extends TestBase {
 
     public void pickCorrectMonth(){
         if (getCurrentMonth() == pickMonthByUser){
-            getForthCell().click();
+            getFifthRowForthCell().click();
         }else if(getCurrentMonth() > pickMonthByUser){
             while (getCurrentMonth() != pickMonthByUser){
                 getPrevArrowHandler().click();
             }
-            getForthCell().click();
+            getFifthRowForthCell().click();
         }else {
             while (getCurrentMonth() != pickMonthByUser){
                 getNextArrowHandler().click();
             }
-            getForthCell().click();
+            getFifthRowForthCell().click();
         }
+    }
+
+    public void pickCorrectDay(){
+
     }
 
 }
