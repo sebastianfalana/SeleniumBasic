@@ -10,9 +10,9 @@ import java.util.List;
 
 public class Homework_DataPickers extends TestBase {
 
-    String pickUserDate = "08/25/2022";
-    int pickDayByUser = 25;
-    int pickMonthByUser = 7;
+    String pickUserDate = "08/31/2022";
+    int pickDayByUser = 31;
+    int pickMonthByUser = 8;
     int pickYearByUser = 2022;
 
     @Test
@@ -39,6 +39,7 @@ public class Homework_DataPickers extends TestBase {
         }
 
         System.out.println(getDataPicker());
+
         Assert.assertEquals(getDataPicker(), pickUserDate);
     }
 
@@ -75,12 +76,12 @@ public class Homework_DataPickers extends TestBase {
     }
 
     public void pickCorrectMonth() {
-        if (getMonth() > pickMonthByUser) {
-            while (getMonth() != pickMonthByUser) {
+        if ((getMonth() + 1) > pickMonthByUser) {
+            while ((getMonth() + 1) != pickMonthByUser) {
                 getPrevArrowHandler().click();
             }
         } else {
-            while (getMonth() != pickMonthByUser) {
+            while ((getMonth() + 1) != pickMonthByUser) {
                 getNextArrowHandler().click();
             }
         }
@@ -93,5 +94,4 @@ public class Homework_DataPickers extends TestBase {
             }
         }
     }
-
 }
